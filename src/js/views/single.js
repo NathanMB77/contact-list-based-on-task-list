@@ -1,26 +1,30 @@
-import React, { useState, useEffect, useContext } from "react";
-import PropTypes from "prop-types";
-import { Link, useParams } from "react-router-dom";
-import { Context } from "../store/appContext";
+import React, { useEffect, useState } from 'react';
+import '../../styles/deleteContactModal.css'
+import { Context } from '../store/appContext';
 
-export const Single = props => {
-	const { store, actions } = useContext(Context);
-	const params = useParams();
-	return (
-		<div className="jumbotron">
-			<h1 className="display-4">This will show the demo element: {store.demo[params.theid].title}</h1>
+export const Single = ({contact}) => {
 
-			<hr className="my-4" />
-
-			<Link to="/">
-				<span className="btn btn-primary btn-lg" href="#" role="button">
-					Back home
-				</span>
-			</Link>
+    return (
+        <div className='full-component mt-5'>
+			<div className='to-do-list'>
+				<div className='list-header'>
+					<div className='user-name p-1'>
+						<h5 className='user-name-text'>{contact.name}</h5>
+					</div>
+				</div>
+				
+				<div className='p-3'>
+					<p className="contact-info">📞 {contact.phone}</p>
+					<p className="contact-info">📧 {contact.email}</p>
+					<p className="contact-info">📍 {contact.address}</p>
+					<p className="contact-info">📍 {contact.id}</p>
+				</div>
+			</div>
+			<div className='extra-pages'>
+				<div className='second-page'></div>
+				<div className='third-page'></div>
+			</div>
+			<br/>
 		</div>
-	);
-};
-
-Single.propTypes = {
-	match: PropTypes.object
-};
+    )
+}
